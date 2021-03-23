@@ -96,7 +96,7 @@ def getNetatmoHomestatus():
             print("Response: " + str(response))
             print("Payload: " + str(payload))
         else:
-            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + "Date time: " + str(datetime.utcnow()))
+            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + " Date time: " + str(datetime.utcnow()))
     else:
         netatmoAccessToken = getNetatmoRefreshAccessToken()
         url = "https://api.netatmo.com/api/homestatus?"
@@ -107,7 +107,7 @@ def getNetatmoHomestatus():
             print("ERROR: The error code is: {}".format(response.status_code))
             print("Response: " + str(netatmoAccessToken))
         else:
-            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + "Date time: " + str(datetime.utcnow()))
+            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + " Date time: " + str(datetime.utcnow()))
     return response 
 
 def getInfluxDBClient():
