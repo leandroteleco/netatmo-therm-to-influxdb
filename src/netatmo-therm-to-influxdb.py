@@ -47,6 +47,7 @@ def getNetatmoAccessToken():
         print("ERROR: The error code is: {}".format(response.status_code))
         print("Response: " + str(response))
         print("Payload: " + str(payload))
+        print("Date Time: " + str(datetime.utcnow()))
     else:
         print("Access Token: " + response.json()["access_token"])
         print("Refresh Token: " + response.json()["refresh_token"])
@@ -54,6 +55,7 @@ def getNetatmoAccessToken():
         netatmoAccessToken = response.json()["access_token"]
         netatmoRefreshToken = response.json()["refresh_token"]
         print("Expires in : " + str(response.json()["expires_in"]) + " / " + str(response.json()["expire_in"]))
+        print("Date Time: " + str(datetime.utcnow()) )
     return response
 
 def getNetatmoRefreshAccessToken():
@@ -71,6 +73,7 @@ def getNetatmoRefreshAccessToken():
         print("ERROR: The error code is: {}".format(response.status_code))
         print("Response: " + str(response))
         print("Payload: " + str(payload))
+        print("Date Time: " + str(datetime.utcnow()))
     else:
         print("Access Token: " + response.json()["access_token"])
         netatmoAccessToken = response.json()["access_token"]
@@ -78,8 +81,8 @@ def getNetatmoRefreshAccessToken():
         netatmoAccessToken = response.json()["refresh_token"]
         print("Expires in : " + str(response.json()["expires_in"]))
         netatmoDatetimeToken = datetime.utcnow()
+        print(netatmoDatetimeToken)
         return response.json()["access_token"]
-
 
 def getNetatmoHomestatus():
     global netatmoAccessToken
@@ -93,7 +96,7 @@ def getNetatmoHomestatus():
             print("Response: " + str(response))
             print("Payload: " + str(payload))
         else:
-            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]))
+            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + "Date time: " + str(datetime.utcnow()))
     else:
         netatmoAccessToken = getNetatmoRefreshAccessToken()
         url = "https://api.netatmo.com/api/homestatus?"
@@ -104,7 +107,7 @@ def getNetatmoHomestatus():
             print("ERROR: The error code is: {}".format(response.status_code))
             print("Response: " + str(netatmoAccessToken))
         else:
-            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]))
+            print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + "Date time: " + str(datetime.utcnow()))
     return response 
 
 def getInfluxDBClient():
