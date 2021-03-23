@@ -9,4 +9,4 @@ COPY . /app
 
 RUN pip3 --no-cache-dir install -r requirements.txt
 
-CMD ["python3", "src/netatmo-therm-to-influx.py"]
+CMD ["python3", "src/netatmo-therm-to-influxdb.py"]
