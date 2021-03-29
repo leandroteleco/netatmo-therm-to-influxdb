@@ -7,6 +7,8 @@ I have no relation with the Netatmo company, I wrote this because I needed it my
 
 This repository contains the code to be able to run a Docker container that connects to your Netatmo Thermostat device, obtains the measured temperature and desired temperature values from time to time, and stores them asynchronously on an InbluxDB 2 server. 
 
+I would like to specify that _I am Not a developer_ as I do it all for hobby as is my passion and in my little free time.
+
 ## Information you need to provide before you start ##
 
 ### You need docker to build and run the container ###
