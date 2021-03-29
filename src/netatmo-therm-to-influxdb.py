@@ -96,7 +96,7 @@ def getNetatmoHomestatus():
             print("Response: " + str(response))
             print("Payload: " + str(payload))
         else:
-            if 'rooms' in response:
+            if 'rooms' in response.json()["body"]["home"]:
                 print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + " Date time: " + str(datetime.utcnow()))
             else:
                print("Response: " + str(response)) 
@@ -110,7 +110,7 @@ def getNetatmoHomestatus():
             print("ERROR: The error code is: {}".format(response.status_code))
             print("Response: " + str(netatmoAccessToken))
         else:
-            if 'rooms' in response:
+            if 'rooms' in response.json()["body"]["home"]:
                 print("Measured Temperature: " + str(response.json()["body"]["home"]["rooms"][0]["therm_measured_temperature"]) + " / Thermostat setting: " + str(response.json()["body"]["home"]["rooms"][0]["therm_setpoint_temperature"]) + " Date time: " + str(datetime.utcnow()))
             else:
                print("Response: " + str(response)) 
